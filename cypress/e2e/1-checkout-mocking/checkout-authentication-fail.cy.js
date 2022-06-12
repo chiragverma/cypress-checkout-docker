@@ -1,4 +1,4 @@
-//---This test is to verify authentication fail appears on the checkout page or not
+//---This test is to verify authentication fail appears on the checkout page
 //---Mocking Stripe APIs to mock the response as authentication failed
 //---To avoid depending on the API responses and remove the flakiness of the tests we will take full control of stripe APIs by using mocking
 import '../../support/commands.js';
