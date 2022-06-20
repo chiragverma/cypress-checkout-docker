@@ -9,7 +9,7 @@ services:
       - ./package.json:/package.json
       - ./cypress.config.js:/cypress.config.js
 
-  firefox:
+  electron:
     build: .
     container_name: cypress-electron
     command: cypress run --headed
