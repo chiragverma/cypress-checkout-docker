@@ -1,0 +1,19 @@
+version: '3'
+services:
+  chrome:
+    build: .
+    container_name: cypress-chrome
+    command: cypress run --browser chrome
+    volumes:
+      - ./cypress:/cypress
+      - ./package.json:/package.json
+      - ./cypress.config.js:/cypress.config.js
+
+  firefox:
+    build: .
+    container_name: cypress-electron
+    command: cypress run --headed
+    volumes:
+      - ./cypress:/cypress
+      - ./package.json:/package.json
+      - ./cypress.config.js:/cypress.config.js
