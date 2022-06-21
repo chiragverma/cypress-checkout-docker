@@ -13,7 +13,9 @@ describe('Stripe Payment Decline', () => {
       cy.visit(response.body.url);
       cy.url().should("contains", "https://checkout.stripe.com/pay/");
     });
+  });
 
+  it('Should display card decline message after payment form submit', () => {
     // mocking payment method endpoint
     cy.intercept('POST', 'https://api.stripe.com/v1/payment_methods', (req) => {
       req.reply({
@@ -27,10 +29,7 @@ describe('Stripe Payment Decline', () => {
       statusCode: 402,
       fixture: 'confirm-fail-response.json' //file with mocked response
       })})
-
-  });
-
-  it('Should display card decline message after payment form submit', () => {
+      
       // fill out all the form fields
       cy.fillCheckout()
       //assert if card decline message appears

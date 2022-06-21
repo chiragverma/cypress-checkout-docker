@@ -14,8 +14,10 @@ describe('Stripe Payment Success', () => {
       cy.visit(response.body.url);
       cy.url().should("contains", "https://checkout.stripe.com/pay/");
     });
+  });
 
-    // mocking payment method endpoint
+  it('Should display payment success message after payment form submit', () => {
+        // mocking payment method endpoint
     cy.intercept('POST', 'https://api.stripe.com/v1/payment_methods', (req) => {
       req.reply({
       statusCode: 200,
@@ -28,10 +30,7 @@ describe('Stripe Payment Success', () => {
       statusCode: 200,
       fixture: 'confirm-pass-response.json' //file with mocked response
       })})
-
-  });
-
-  it('Should display payment success message after payment form submit', () => {
+      
       // fill out all the form fields
       cy.fillCheckout()
       //check if the success checkmark appears
