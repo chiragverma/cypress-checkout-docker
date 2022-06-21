@@ -13,7 +13,9 @@ describe('Stripe Payment Authentication Fails', () => {
       cy.visit(response.body.url);
       cy.url().should("contains", "https://checkout.stripe.com/pay/");
     });
+  });
 
+  it('Should display authentication fail message after payment form submit', () => {
     // mocking payment method endpoint
     cy.intercept('POST', 'https://api.stripe.com/v1/payment_methods', (req) => {
       req.reply({
@@ -27,9 +29,7 @@ describe('Stripe Payment Authentication Fails', () => {
       statusCode: 200,
       fixture: 'confirm-auth-response.json' //file with mocked response
       })})
-  });
-
-  it('Should display authentication fail message after payment form submit', () => {
+      
       // fill out all the checkout form fields
       cy.fillCheckout()
       //assert if the authentication fail message appears
