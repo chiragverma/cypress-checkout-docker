@@ -1,5 +1,7 @@
 # Boiler plate for testing UI and mocking Stripe API - https://checkout.stripe.dev/preview
 
+This uses Cypress, Docker and Mocking APIs
+
 
 ![alt text](https://github.com/chiragverma/cypress-checkout/blob/master/StripePage.png)
 
